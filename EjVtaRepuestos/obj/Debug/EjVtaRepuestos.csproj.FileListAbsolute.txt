@@ -1,0 +1,7 @@
+C:\Users\NyD\Desktop\Diego\CAI\Practica\EjVtaRepuestos\EjVtaRepuestos\bin\Debug\EjVtaRepuestos.exe.config
+C:\Users\NyD\Desktop\Diego\CAI\Practica\EjVtaRepuestos\EjVtaRepuestos\bin\Debug\EjVtaRepuestos.exe
+C:\Users\NyD\Desktop\Diego\CAI\Practica\EjVtaRepuestos\EjVtaRepuestos\bin\Debug\EjVtaRepuestos.pdb
+C:\Users\NyD\Desktop\Diego\CAI\Practica\EjVtaRepuestos\EjVtaRepuestos\obj\Debug\EjVtaRepuestos.csprojAssemblyReference.cache
+C:\Users\NyD\Desktop\Diego\CAI\Practica\EjVtaRepuestos\EjVtaRepuestos\obj\Debug\EjVtaRepuestos.csproj.CoreCompileInputs.cache
+C:\Users\NyD\Desktop\Diego\CAI\Practica\EjVtaRepuestos\EjVtaRepuestos\obj\Debug\EjVtaRepuestos.exe
+C:\Users\NyD\Desktop\Diego\CAI\Practica\EjVtaRepuestos\EjVtaRepuestos\obj\Debug\EjVtaRepuestos.pdb
