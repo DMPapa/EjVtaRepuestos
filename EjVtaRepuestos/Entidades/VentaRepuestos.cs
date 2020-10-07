@@ -28,6 +28,7 @@ namespace EjVtaRepuestos.Entidades
             get { return this._listaProductos; }
             set { this._listaProductos = value; }
         }
+        public VentaRepuestos() { }
         public VentaRepuestos(string nom, string dir)
         {
             this._listaProductos = new List<Repuesto>();
@@ -35,12 +36,12 @@ namespace EjVtaRepuestos.Entidades
             this._direccion = dir;
         }
 
-        public void AgregarRepuesto(int cod, string nom, double pre, int stock, Categoria cat)
+        public void AgregarRepuesto(int cod, string nom, double pre, int stock, int codcat)
         {
 
             try
             {
-                this.Repuestos.Add(new Repuesto(cod, nom, pre, stock, cat));
+                this.Repuestos.Add(new Repuesto(cod, nom, pre, stock, codcat));
             }
             catch { throw new Exception("Error al agregar repuesto"); }
         }
@@ -48,7 +49,7 @@ namespace EjVtaRepuestos.Entidades
         public void QuitarRepuesto (int cod)
         {
             int quitados = 0;
-            foreach (Repuesto rep in this._listaProductos)
+            foreach (Repuesto rep in this.Repuestos)
             {
                 if (rep.Codigo == cod)
                 {
@@ -121,5 +122,10 @@ namespace EjVtaRepuestos.Entidades
             }
             return listado;
         }
+        public override string ToString()
+        {
+            return this._listaProductos.ToString();
+        }
+
     }
 }

@@ -24,6 +24,7 @@ namespace EjVtaRepuestos
             {
                 Console.WriteLine(ingreso);
                 if (int.TryParse(Console.ReadLine(), out numero) == true)
+                    
                     esnumero = true;
                 else Console.WriteLine("\n--Lo ingresado no es número --\n");
             } while (esnumero == false);

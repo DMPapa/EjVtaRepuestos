@@ -46,14 +46,15 @@ namespace EjVtaRepuestos.Entidades
             get { return this._categoria; }
             set { this._categoria = value; }
         }
-
-        public Repuesto (int cod, string nom, double pre, int stock, Categoria cat)
+        public Repuesto() { }
+        public Repuesto (int cod, string nom, double pre, int stock, int codcat)
         {
             this._codigo = cod;
             this._nombre = nom;
             this._precio = pre;
             this._stock = stock;
-            this._categoria = cat;
+            this._categoria = CategoriaHelper.GetCategoriaPorCodigo(codcat);
+
             
         }
         public override string ToString()

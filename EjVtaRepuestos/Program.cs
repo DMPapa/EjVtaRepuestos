@@ -39,11 +39,13 @@ namespace EjVtaRepuestos
                     switch (eleccion)
                     {
                         case 1:
+                            
                             e1.AgregarRepuesto(
                                 ConsolaHelper.PedirNumero("Ingrese código del repuesto"),
                                 ConsolaHelper.PedirTexto("Ingrese nombre del repuesto"),
                                 ConsolaHelper.PedirDouble("Ingrese precio del repuesto"),
-                                ConsolaHelper.PedirNumero("Ingrese stock inicial"), c1);                                ;
+                                ConsolaHelper.PedirNumero("Ingrese stock inicial"),
+                                ConsolaHelper.PedirNumero("Ingrese código de la categoria)")); ;
                             break;
                         case 2:
                             e1.QuitarRepuesto(ConsolaHelper.PedirNumero("Ingrese código del repuesto a quitar"));
@@ -64,7 +66,8 @@ namespace EjVtaRepuestos
                                 ConsolaHelper.PedirNumero("Ingrese stock a quitar"));
                             break;
                         case 6:
-                            e1.TraerPorCategoria(ConsolaHelper.PedirNumero("Ingrese código de la categoría"));
+                            Console.WriteLine(e1.TraerPorCategoria(ConsolaHelper.PedirNumero("Ingrese código de la categoría")).ToString());
+                            
                             break;
                         case 7:
                             finalizar = true;

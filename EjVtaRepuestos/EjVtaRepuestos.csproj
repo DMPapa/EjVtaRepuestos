@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriaHelper.cs" />
     <Compile Include="ConsolaHelper.cs" />
     <Compile Include="Entidades\Categoria.cs" />
     <Compile Include="Entidades\Repuesto.cs" />
