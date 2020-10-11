@@ -48,19 +48,20 @@ namespace EjVtaRepuestos.Entidades
 
         public void QuitarRepuesto (int cod)
         {
-            int quitados = 0;
-            foreach (Repuesto rep in this.Repuestos)
-            {
-                if (rep.Codigo == cod)
+                int quitados = 0;
+                foreach (Repuesto rep in this.Repuestos)
                 {
-                    this.Repuestos.Remove(rep);
-                    quitados += 1;
+                    if (rep.Codigo == cod)
+                    {
+                        this.Repuestos.Remove(rep);
+                        quitados += 1;
+                    }
                 }
-            }
-            if (quitados == 0)
-            {
-                throw new Exception("No hay repuesto a quitar");
-            }    
+                if (quitados == 0)
+                {
+                    throw new Exception("No hay repuesto a quitar");
+                }
+        
         }
         public void ModificarPrecio (int cod, double precio)
         {

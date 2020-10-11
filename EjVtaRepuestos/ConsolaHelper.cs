@@ -13,8 +13,21 @@ namespace EjVtaRepuestos
 
         public static string PedirTexto(string ingreso)
         {
-            Console.WriteLine(ingreso);
-            return Console.ReadLine();
+            bool estexto = true;
+            int numero;
+            string texto;
+            do
+            {
+                Console.WriteLine(ingreso);
+                estexto = true;
+                texto = Console.ReadLine();
+                if (int.TryParse(texto, out numero) == true)
+                {
+                    estexto = false;
+                    Console.WriteLine("\n--Lo ingresado es número, debe ser texto --\n");
+                }
+            } while (estexto == false);
+            return texto;
         }
         public static int PedirNumero(string ingreso)
         {

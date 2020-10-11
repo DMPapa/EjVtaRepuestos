@@ -66,8 +66,10 @@ namespace EjVtaRepuestos
                                 ConsolaHelper.PedirNumero("Ingrese stock a quitar"));
                             break;
                         case 6:
-                            Console.WriteLine(e1.TraerPorCategoria(ConsolaHelper.PedirNumero("Ingrese código de la categoría")).ToString());
-                            
+                            string listado = null;
+                            foreach (Repuesto rep in e1.TraerPorCategoria(ConsolaHelper.PedirNumero("Ingrese código de la categoría")))
+                            { listado += rep.ToString() + "\n"; }
+                            ConsolaHelper.Mensaje(listado);
                             break;
                         case 7:
                             finalizar = true;
