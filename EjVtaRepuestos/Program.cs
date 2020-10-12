@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,62 +22,79 @@ namespace EjVtaRepuestos
             bool finalizar = false;
             do
             {
-                int eleccion = ConsolaHelper.PedirNumero(
-                    "\nSelecione opción: \n" +
-                    "1- Agregar Repuesto \n" +
-                    "2- Quitar Repuesto \n" +
-                    "3- Modificar Precio \n" +
-                    "4- Agregar Stock \n" +
-                    "5- Quitar Stock \n" +
-                    "6- Traer por Categoria \n" +
-                    "7- Salir \n");
+                    int eleccion = ConsolaHelper.PedirNumero(
+                        "\nSelecione opción: \n" +
+                        "1- Agregar Repuesto \n" +
+                        "2- Quitar Repuesto \n" +
+                        "3- Modificar Precio \n" +
+                        "4- Agregar Stock \n" +
+                        "5- Quitar Stock \n" +
+                        "6- Traer por Categoria \n" +
+                        "7- Salir \n");
 
 
-                if (eleccion > 7 || eleccion < 0)
-                    throw new Exception("\n--Debe ingresar una opción válida--\n");
+                    if (eleccion > 7 || eleccion < 0)
+                        ConsolaHelper.Mensaje("\n--Debe ingresar una opción válida--\n");
 
-                else
-                    switch (eleccion)
-                    {
-                        case 1:
-                            
-                            e1.AgregarRepuesto(
-                                ConsolaHelper.PedirNumero("Ingrese código del repuesto"),
-                                ConsolaHelper.PedirTexto("Ingrese nombre del repuesto"),
-                                ConsolaHelper.PedirDouble("Ingrese precio del repuesto"),
-                                ConsolaHelper.PedirNumero("Ingrese stock inicial"),
-                                ConsolaHelper.PedirNumero("Ingrese código de la categoria)")); ;
-                            break;
-                        case 2:
-                            e1.QuitarRepuesto(ConsolaHelper.PedirNumero("Ingrese código del repuesto a quitar"));
-                            break;
-                        case 3:
-                            e1.ModificarPrecio(
-                                ConsolaHelper.PedirNumero("Ingrese código del repuesto a modificar precio"),
-                                ConsolaHelper.PedirDouble("Ingrese nuevo precio"));
-                            break;
-                        case 4:
-                            e1.AgregarStock(
-                                ConsolaHelper.PedirNumero("Ingrese código del repuesto a modificar stock"),
-                                ConsolaHelper.PedirNumero("Ingrese stock a agregar"));
-                            break;
-                        case 5:
-                            e1.QuitarStock(
-                                ConsolaHelper.PedirNumero("Ingrese código del repuesto a modificar stock"),
-                                ConsolaHelper.PedirNumero("Ingrese stock a quitar"));
-                            break;
-                        case 6:
-                            string listado = null;
-                            foreach (Repuesto rep in e1.TraerPorCategoria(ConsolaHelper.PedirNumero("Ingrese código de la categoría")))
-                            { listado += rep.ToString() + "\n"; }
-                            ConsolaHelper.Mensaje(listado);
-                            break;
-                        case 7:
-                            finalizar = true;
-                            break;
-                    }
-            } while (finalizar == false);
+                    else
+                        switch (eleccion)
+                        {
+                            case 1:
 
+                                e1.AgregarRepuesto(
+                                    ConsolaHelper.PedirNumero("\nIngrese código del repuesto\n"),
+                                    ConsolaHelper.PedirTexto("\nIngrese nombre del repuesto\n"),
+                                    ConsolaHelper.PedirDouble("\nIngrese precio del repuesto\n"),
+                                    ConsolaHelper.PedirNumero("\nIngrese stock inicial\n"),
+                                    ConsolaHelper.PedirNumero("\nIngrese código de la categoria\n")); ;
+                                break;
+                            case 2:
+                                try
+                                {
+                                    e1.QuitarRepuesto(ConsolaHelper.PedirNumero("\nIngrese código del repuesto a quitar\n"));
+                                }
+                                catch (Exception ex1) { ConsolaHelper.Mensaje(ex1.Message); }
+                                break;
+                            case 3:
+                                try
+                                {
+                                    e1.ModificarPrecio(
+                                        ConsolaHelper.PedirNumero("\nIngrese código del repuesto a modificar precio\n"),
+                                        ConsolaHelper.PedirDouble("\nIngrese nuevo precio\n"));
+                                }
+                                catch (Exception ex1) { ConsolaHelper.Mensaje(ex1.Message); }
+                                break;
+                            case 4:
+                                try
+                                {
+                                    e1.AgregarStock(
+                                        ConsolaHelper.PedirNumero("\nIngrese código del repuesto a modificar stock\n"),
+                                        ConsolaHelper.PedirNumero("\nIngrese stock a agregar\n"));
+                                }
+                                catch (Exception ex1) { ConsolaHelper.Mensaje(ex1.Message); }
+                                break;
+                            case 5:
+                                try
+                                {
+                                    e1.QuitarStock(
+                                        ConsolaHelper.PedirNumero("\nIngrese código del repuesto a modificar stock\n"),
+                                        ConsolaHelper.PedirNumero("\nIngrese stock a quitar\n"));
+
+                                }
+                                catch (StockNegativoException ex2) { ConsolaHelper.Mensaje(ex2.Message); }
+                                catch (Exception ex1) { ConsolaHelper.Mensaje(ex1.Message); }
+                                break;
+                            case 6:
+                                string listado = null;
+                                foreach (Repuesto rep in e1.TraerPorCategoria(ConsolaHelper.PedirNumero("\nIngrese código de la categoría\n")))
+                                { listado += rep.ToString() + "\n"; }
+                                ConsolaHelper.Mensaje("\n" + listado);
+                                break;
+                            case 7:
+                                finalizar = true;
+                                break;
+                        }
+                } while (finalizar == false) ;
         }
     }
 }

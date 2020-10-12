@@ -43,7 +43,7 @@ namespace EjVtaRepuestos.Entidades
             {
                 this.Repuestos.Add(new Repuesto(cod, nom, pre, stock, codcat));
             }
-            catch { throw new Exception("Error al agregar repuesto"); }
+            catch { throw new Exception("\nError al agregar repuesto\n"); }
         }
 
         public void QuitarRepuesto (int cod)
@@ -59,7 +59,7 @@ namespace EjVtaRepuestos.Entidades
                 }
                 if (quitados == 0)
                 {
-                    throw new Exception("No hay repuesto a quitar");
+                    throw new Exception("\nNo hay repuesto a quitar\n");
                 }
         
         }
@@ -76,47 +76,54 @@ namespace EjVtaRepuestos.Entidades
             }
             if (cambiados == 0)
             {
-                throw new Exception("No hay repuesto a cambiar de precio");
+                throw new Exception("\nNo hay repuesto a cambiar de precio\n");
             }
         }
         public void AgregarStock(int cod, int cant)
         {
-            int stockeado = 0;
-            foreach(Repuesto rep in this.Repuestos)
-            {
-                if (rep.Codigo == cod)
+  
+                int stockeado = 0;
+                foreach (Repuesto rep in this.Repuestos)
                 {
-                    rep.Stock += cant;
-                    stockeado += 1;
-                }    
-            }
-            if (stockeado == 0)
-            {
-                throw new Exception("No hay repuesto a stockear");
-            }
+                    if (rep.Codigo == cod)
+                    {
+                        rep.Stock += cant;
+                        stockeado += 1;
+                    }
+                }
+                if (stockeado == 0)
+                {
+                    throw new Exception("\nNo hay repuesto a stockear\n");
+                }
+ 
         }
         public void QuitarStock(int cod, int cant)
         {
-            int stockeado = 0;
-            foreach (Repuesto rep in this.Repuestos)
-            {
-                if (rep.Codigo == cod)
+                int stockeado = 0;
+                foreach (Repuesto rep in this.Repuestos)
                 {
-                    rep.Stock -= cant;
+                    if (rep.Codigo == cod)
+                    {
+
+                        if ((rep.Stock-cant) < 0)
+                            throw new StockNegativoException("\nEl stock no puede ser menor a 0\n");
+
+                        else rep.Stock -= cant;
                     stockeado += 1;
+                    }
                 }
-            }
-            if (stockeado == 0)
-            {
-                throw new Exception("No hay repuesto a stockear");
-            }
+                if (stockeado == 0)
+                {
+                    throw new Exception("\nNo hay repuesto a stockear\n");
+                }
+
         }
         public List<Repuesto> TraerPorCategoria(int cod)
         {
             List<Repuesto> listado = new List<Repuesto>();
             foreach (Repuesto rep in this.Repuestos)
             {
-                if (rep.CategoriaRepuesto.Codigo == cod)
+                if (rep.GetCategoria.Codigo == cod)
                 {
                     listado.Add(rep);
                 }

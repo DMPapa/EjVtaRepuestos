@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EjVtaRepuestos.Entidades;
 
 namespace EjVtaRepuestos.Entidades
 {
@@ -32,19 +33,11 @@ namespace EjVtaRepuestos.Entidades
         public int Stock
         {
             get { return this._stock; }
-            set 
-            { 
-                this._stock = value;
-                if (this._stock <0)
-                {
-                    throw new Exception("El stock no puede ser menor a 0");
-                }    
-            }
+            set { this._stock = value;}
         }
-        public Categoria CategoriaRepuesto
+        public Categoria GetCategoria
         {
             get { return this._categoria; }
-            set { this._categoria = value; }
         }
         public Repuesto() { }
         public Repuesto (int cod, string nom, double pre, int stock, int codcat)
